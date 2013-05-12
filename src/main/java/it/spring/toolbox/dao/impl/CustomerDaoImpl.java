@@ -5,12 +5,17 @@ import java.util.List;
 import it.spring.toolbox.dao.CustomerDAO;
 import it.spring.toolbox.domain.Customer;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 @Repository("CustomerDAO")
 public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDAO {
 
+	@Autowired
+	private SessionFactory sessionFactory;
+	
 	@Override
 	public void save(Customer customer) {
 		getHibernateTemplate().save(customer);
