@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>it.spring.toolbox</groupId>
-	<artifactId>library</artifactId>
+	<artifactId>hitech-store</artifactId>
 	<packaging>war</packaging>
 	<version>1.0</version>
 
