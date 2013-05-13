@@ -16,7 +16,7 @@
 
 <body onload='document.f.j_username.focus();'>
 <div class="span10">
-	<h1>LIBRERIA ONLINE</h1>
+	<h1>ONLINE HITECH STORE</h1>
 	<h2>Login Page</h2>
 	
 	<c:if test="${not empty error}">

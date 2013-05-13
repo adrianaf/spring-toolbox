@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
  
-	<display-name>Online Library</display-name>
+	<display-name>Online Hitech Store</display-name>
  
 	<!-- Spring MVC -->
 	<servlet>
