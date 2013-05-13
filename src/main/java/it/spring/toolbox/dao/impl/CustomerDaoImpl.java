@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
-@Repository("CustomerDAO")
+@Repository("CustomerDAOImpl")
 public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDAO {
 
 	@Autowired
-	private SessionFactory sessionFactory;
+	public CustomerDaoImpl(SessionFactory sessionFactory) {
+		setSessionFactory(sessionFactory);
+	}
 	
 	@Override
 	public void save(Customer customer) {

@@ -23,7 +23,7 @@
 	<listener>
 		<listener-class>
                   org.springframework.web.context.ContextLoaderListener
-                </listener-class>
+        </listener-class>
 	</listener>
  
 	<context-param>
@@ -32,6 +32,8 @@
 			/WEB-INF/applicationContext.xml
 			/WEB-INF/mvc-dispatcher-servlet.xml,
 			/WEB-INF/spring-security.xml
+			classpath:/database/DataSource.xml
+			classpath:/database/Hibernate.cfg.xml
 		</param-value>
 	</context-param>
  

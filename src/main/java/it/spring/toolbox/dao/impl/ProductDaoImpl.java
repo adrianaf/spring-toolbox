@@ -6,12 +6,19 @@ import it.spring.toolbox.dao.ProductDAO;
 import it.spring.toolbox.domain.Customer;
 import it.spring.toolbox.domain.Product;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
-@Repository("ProductDAO")
+@Repository("ProductDAOImpl")
 public class ProductDaoImpl extends HibernateDaoSupport implements ProductDAO {
 
+	@Autowired
+	public ProductDaoImpl(SessionFactory sessionFactory) {
+		setSessionFactory(sessionFactory);
+	}
+	
 	@Override
 	public void save(Product product) {
 		getHibernateTemplate().save(product);

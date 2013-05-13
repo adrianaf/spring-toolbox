@@ -6,12 +6,19 @@ import it.spring.toolbox.dao.OrderDAO;
 import it.spring.toolbox.domain.Order;
 import it.spring.toolbox.domain.Product;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
-@Repository("OrderDAO")
+@Repository("OrderDAOImpl")
 public class OrderDaoImpl extends HibernateDaoSupport implements OrderDAO {
 
+	@Autowired
+	public OrderDaoImpl(SessionFactory sessionFactory) {
+		setSessionFactory(sessionFactory);
+	}
+	
 	@Override
 	public void save(Order order) {
 		getHibernateTemplate().save(order);

@@ -25,7 +25,7 @@
 		<!-- Indica a Hibernate quale package contiene le classi con le annotazioni 
 			per il mapping verso il db -->
 		<property name="packagesToScan" value="it.spring.toolbox.domain" />
-
+		<property name="packagesToScan" value="it.spring.toolbox.dao" />
 		<!-- <property name="annotatedClasses"> <list> <value>it.spring.toolbox.model.Book</value> 
 			</list> </property> -->
 
