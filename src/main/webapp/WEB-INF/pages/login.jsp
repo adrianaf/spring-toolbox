@@ -16,8 +16,7 @@
 
 <body onload='document.f.j_username.focus();'>
 <div class="span10">
-	<h1>ONLINE HITECH STORE</h1>
-	<h2>Login Page</h2>
+	<h1>ONLINE HITECH STORE - Login Page</h1>
 	
 	<c:if test="${not empty error}">
 		<div class="errorblock">
@@ -25,7 +24,8 @@
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 		</div>
 	</c:if>
-	
+
+<div class="span9">
 	<form name='f' action="<c:url value='j_spring_security_check' />" method='POST'>
 		<!-- I nomi degli input j_username, etc... seguono lo standard Spring Security -->
 		<label>Name</label> <input type="text" name="j_username" class="span3"> 
@@ -35,6 +35,7 @@
 		<label>Password</label> <input type="password" name="j_password" class="span3"> 
 		<div><input type="submit" value="Login" class="btn btn-primary"></div>
 	</form>
+</div>
 </div>
 	<script src="http://code.jquery.com/jquery.js"></script>
 
