@@ -12,9 +12,9 @@
 		<logout logout-success-url="/logout" />
 	</http>
 	
-	<beans:bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<!-- <beans:bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<beans:property name="location" value="/WEB-INF/properties/security.properties" />
-    </beans:bean>
+    </beans:bean> -->
 
 	<authentication-manager>
 		<authentication-provider>

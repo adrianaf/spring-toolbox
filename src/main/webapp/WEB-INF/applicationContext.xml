@@ -21,4 +21,14 @@
 
 	<bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator" />
 
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="false">
+		<property name="locations">
+			<list>
+				<value>classpath:/properties/database.properties</value>
+				<value>/WEB-INF/properties/security.properties</value>
+			</list>
+		</property>
+	</bean>
+
 </beans>
