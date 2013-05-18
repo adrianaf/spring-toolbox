@@ -32,7 +32,7 @@
 			/WEB-INF/applicationContext.xml
 			/WEB-INF/spring-security.xml
 			classpath:/database/DataSource.xml
-			classpath:/database/Hibernate.cfg.xml
+			<!-- classpath:/database/Hibernate.cfg.xml -->
 		</param-value>
 	</context-param>
  

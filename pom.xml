@@ -13,11 +13,11 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>1.6</java-version>
-		<spring.version>3.1.1.RELEASE</spring.version>
+		<spring.version>3.1.4.RELEASE</spring.version>
 		<org.aspectj-version>1.7.0</org.aspectj-version>
 		<ch.qos.logback-version>1.0.7</ch.qos.logback-version>
 		<org.apache.tiles-version>3.0.1</org.apache.tiles-version>
-		<hibernate-version>3.5.6-Final</hibernate-version>
+		<hibernate.version>3.5.6-Final</hibernate.version>
 	</properties>
 
 	<dependencies>
@@ -93,7 +93,14 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate-version}</version>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+			<!-- will come with Hibernate core -->
 		</dependency>
 
 		<dependency>
@@ -107,7 +114,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-annotations</artifactId>
-			<version>${hibernate-version}</version>
+			<version>${hibernate.version}</version>
 		</dependency>
 
 
@@ -142,6 +149,14 @@
 			<groupId>antlr</groupId>
 			<artifactId>antlr</artifactId>
 			<version>2.7.7</version>
+		</dependency>
+
+
+		<!-- Javax dependency -->
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
 		</dependency>
 		<!-- Hibernate library dependecy end -->
 
