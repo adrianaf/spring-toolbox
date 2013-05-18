@@ -30,14 +30,19 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDAO {
 	}
 
 	@Override
-	public void delete(Product product) {
-		getHibernateTemplate().delete(product);
+	public void delete(Integer productId) {
+		getHibernateTemplate().delete(productId);
 	}
 
 	@Override
 	public Product findProductByType(String type) {
-		List list = getHibernateTemplate().find("from products where type=?", type);
+		List<Product> list = getHibernateTemplate().find("from products where type=?", type);
 		return (Product) list.get(0);
+	}
+
+	@Override
+	public List<Product> listProducts() {
+		return getHibernateTemplate().find("from products");
 	}
 
 }

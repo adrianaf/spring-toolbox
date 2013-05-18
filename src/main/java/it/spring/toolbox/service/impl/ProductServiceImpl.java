@@ -1,5 +1,7 @@
 package it.spring.toolbox.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,24 +17,29 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductDAO productDao;
 	
-	@Override
+	@Transactional
 	public void save(Product product) {
 		productDao.save(product);
 	}
 
-	@Override
+	@Transactional
 	public void update(Product product) {
 		productDao.update(product);
 	}
 
-	@Override
-	public void delete(Product product) {
-		productDao.delete(product);
+	@Transactional
+	public void delete(Integer productId) {
+		productDao.delete(productId);
 	}
 
-	@Override
+	@Transactional
 	public Product findProductByType(String type) {
 		return productDao.findProductByType(type);
+	}
+
+	@Transactional
+	public List<Product> listProducts() {
+		return productDao.listProducts();
 	}
 
 }

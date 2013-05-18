@@ -19,7 +19,7 @@ public class LoginController {
 		model.addAttribute("username", name);
 		model.addAttribute("message", "Hello World!");
 		
-		return "home";
+		return "products";
 		
 	}
 	
