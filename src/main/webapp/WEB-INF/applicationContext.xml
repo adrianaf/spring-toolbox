@@ -59,20 +59,16 @@
 				<value>it.spring.toolbox.dao</value>
 			</list>
 		</property>
-	
-		<!-- <property name="annotatedClasses"> <list> <value>it.spring.toolbox.domain.Product</value> 
-			</list> </property> -->
-
-		<!-- <property name="mappingResources"> <list> <value>/hibernate/Book.hbm.xml</value> 
-			</list> </property> -->
-
 	</bean>
 
 
+	<!-- Bean che gestisce le transazioni in Hibernate -->
 	<bean id="txManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<!-- tag che serve per fare in modo che l'annotazione @Transactional funzioni -->
 	<tx:annotation-driven transaction-manager="txManager" />
 
 </beans>

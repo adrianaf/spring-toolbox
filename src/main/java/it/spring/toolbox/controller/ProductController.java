@@ -31,6 +31,20 @@ public class ProductController {
 		
 	}
 	
+	/**
+	 * Metodo che aggiunge un prodotto al database.
+	 * 
+	 * L'annotazione @ModelAttribute viene utilizzata per manipolare un oggetto del model (in
+	 * questo caso Product). Questa annotazione, quando utilizzata all'interno della lista dei 
+	 * parametri dei metodi, viene usata o per popolare il model con alcuni attributi o per 
+	 * recuperare oggetti da mostrare ad esempio in un form html.
+	 * 
+	 * BindingResult viene tipicamente usato per la validazione.
+	 * 
+	 * @param product
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addProduct(@ModelAttribute("product") Product product, BindingResult result) {
 		
@@ -40,6 +54,12 @@ public class ProductController {
 		
 	}
 	
+	/**
+	 * 
+	 * 
+	 * @param productId
+	 * @return
+	 */
 	@RequestMapping("/delete/{productId}")
 	public String deleteProduct(@PathVariable("productId") Integer productId) {
 		
