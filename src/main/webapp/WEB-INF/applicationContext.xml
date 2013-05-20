@@ -46,6 +46,8 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
+				<!-- Crea automaticamente il database servendosi delle annotazioni nelle classi nel package domain  -->
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
 		</property>
 
@@ -57,7 +59,7 @@
 				<value>it.spring.toolbox.dao</value>
 			</list>
 		</property>
-
+	
 		<!-- <property name="annotatedClasses"> <list> <value>it.spring.toolbox.domain.Product</value> 
 			</list> </property> -->
 

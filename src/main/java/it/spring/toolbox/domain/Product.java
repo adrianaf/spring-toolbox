@@ -23,7 +23,6 @@ import javax.persistence.Table;
  * @author Adriana
  *
  */
-@SuppressWarnings("deprecation")
 @Entity
 @Table(name = "products", catalog = "hitech_store")
 public class Product implements Serializable {
@@ -39,7 +38,7 @@ public class Product implements Serializable {
 
 	//Annotazioni che indicano che productId è chiave primaria, unica, non nulla e generata automaticamente
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id", unique = true, nullable = false)
 	public int getProductId() {
 		return productId;
