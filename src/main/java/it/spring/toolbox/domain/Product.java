@@ -63,9 +63,9 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 
-	//Annotationi che indicano che c'è un foreign key constraint
+	//Annotationi che indicano che c'è un foreign key constraint e una relazione many-to-one verso producer
 	@ManyToOne
-	@JoinColumn(name="producer_id", nullable=false)
+	@JoinColumn(name = "producer_id", nullable = false)
 	public Producer getProducer() {
 		return producer;
 	}

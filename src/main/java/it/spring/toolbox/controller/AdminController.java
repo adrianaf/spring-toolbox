@@ -1,6 +1,8 @@
 package it.spring.toolbox.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +12,6 @@ import it.spring.toolbox.service.ProducerService;
 import it.spring.toolbox.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,6 +29,7 @@ public class AdminController {
 	@Autowired
 	private ProducerService producerService;
 	
+	
 	/**
 	 * Metodo che aggiunge un prodotto al database.
 	 * 
@@ -36,11 +38,16 @@ public class AdminController {
 	 * parametri dei metodi, viene usata o per popolare il model con alcuni attributi o per 
 	 * recuperare oggetti da mostrare ad esempio in un form html.
 	 * 
-	 * BindingResult viene tipicamente usato per la validazione.
+	 * ModelMap è una classe che viene utilizzata per salvare informazioni da passare alla view.
+	 * E' una mappa, per la precisione una LinkedHashMap. 
 	 * 
-	 * @param product
-	 * @param result
-	 * @return
+	 * HttpServletRequest è la classe che gestisce le richieste http che arrivano dalla view.
+	 * 
+	 * 
+	 * @param product il prodotto da aggiungere
+	 * @param map mappa in cui salvare informazioni da passare alla jsp
+	 * @param request richiesta da parte della jsp (http request)
+	 * @return String nome della jsp da visualizzare
 	 */
 	@RequestMapping("/addProduct")
 	public String addProducts(@ModelAttribute("product") Product product, ModelMap map, HttpServletRequest request) {
@@ -48,10 +55,23 @@ public class AdminController {
 		int producerId = (Integer) request.getSession().getAttribute("producerId");
 		
 		Producer producer = producerService.findProducerById(producerId);
-		
+
+		// Se il produttore non esiste nel db lo crea, lo inserisce in product e nel db stesso
 		if(producer == null) {
 			
+			producer = new Producer();
+			producer.setProducerId(producerId);
+			producer.setName("prodName");
 			
+			Set<Product> prods = new HashSet<Product>();
+			prods.add(product);
+			producer.setProducts(prods);
+			
+			producer.setTown("rome");
+			
+			product.setProducer(producer);
+			
+			producerService.save(producer);
 			
 		}
 		
@@ -79,6 +99,7 @@ public class AdminController {
 		return "redirect:/showProducts";
 		
 	}
+	
 	
 	@RequestMapping("/addProducer")
 	public String addProducer(@ModelAttribute("producer") Producer producer, ModelMap map) {
