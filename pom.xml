@@ -174,13 +174,21 @@
 			<version>1.1.2</version>
 			<scope>compile</scope>
 		</dependency>
-		<!-- JSTL library dependencies end -->
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
+			<scope>provided</scope>
 		</dependency>
+
+		<!-- <dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>jstl-api</artifactId>
+			<version>1.2</version>
+			<scope>compile</scope>
+		</dependency> -->
+		<!-- JSTL library dependencies end -->
 
 
 	</dependencies>

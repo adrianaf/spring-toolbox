@@ -38,6 +38,7 @@ public class AdminController {
 	 * parametri dei metodi, viene usata o per popolare il model con alcuni attributi o per 
 	 * recuperare oggetti da mostrare ad esempio in un form html.
 	 * 
+	 * 
 	 * ModelMap è una classe che viene utilizzata per salvare informazioni da passare alla view.
 	 * E' una mappa, per la precisione una LinkedHashMap. 
 	 * 
@@ -52,7 +53,7 @@ public class AdminController {
 	@RequestMapping("/addProduct")
 	public String addProducts(@ModelAttribute("product") Product product, ModelMap map, HttpServletRequest request) {
 		
-		int producerId = (Integer) request.getSession().getAttribute("producerId");
+		int producerId = new Integer(request.getParameter("producerId"));
 		
 		Producer producer = producerService.findProducerById(producerId);
 
