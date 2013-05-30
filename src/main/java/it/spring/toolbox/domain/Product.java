@@ -6,12 +6,15 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Classe che mappa l'oggetto Product nella corrispondente tabella mysql e viceversa.
@@ -30,11 +33,7 @@ public class Product implements Serializable {
 	private int productId;
 	private String productType;
 	private int price;
-	
-	//Annotationi che indicano che c'è un foreign key constraint
-	@ManyToOne
-	@JoinColumn(name="producers_id", table="producers")
-	private int producerId;
+	private Producer producer;
 
 	//Annotazioni che indicano che productId è chiave primaria, unica, non nulla e generata automaticamente
 	@Id
@@ -64,12 +63,16 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 
-	public int getProducerId() {
-		return producerId;
+	//Annotationi che indicano che c'è un foreign key constraint
+	@ManyToOne
+	@JoinColumn(name="producer_id", nullable=false)
+	public Producer getProducer() {
+		return producer;
 	}
 
-	public void setProducerId(int producerId) {
-		this.producerId = producerId;
+	
+	public void setProducer(Producer producer) {
+		this.producer = producer;
 	}
 
 }

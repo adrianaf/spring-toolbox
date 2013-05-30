@@ -46,7 +46,7 @@ body {
 </head>
 <div class="row">
 	<div class="span8">
-		<form action="add" method="post" class="form-horizontal" id="billingform" accept-charset="utf-8">
+		<form action="addProduct" method="post" class="form-horizontal" id="billingform" accept-charset="utf-8">
 			<div class="control-group">
 				<label for="productType" class="control-label">	
 					Product Type 

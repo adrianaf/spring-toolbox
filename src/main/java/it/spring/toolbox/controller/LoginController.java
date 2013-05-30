@@ -43,7 +43,7 @@ public class LoginController {
 		model.addAttribute("username", name);
 		model.addAttribute("message", "Hello World!");
 		
-		return "products";
+		return "saveproducts";
 		
 	}
 	

@@ -46,7 +46,8 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<!-- Crea automaticamente il database servendosi delle annotazioni nelle classi nel package domain  -->
+				<!-- Crea automaticamente il database servendosi delle annotazioni nelle 
+					classi nel package domain -->
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
 		</property>
@@ -56,9 +57,9 @@
 		<property name="packagesToScan">
 			<list>
 				<value>it.spring.toolbox.domain</value>
-				<value>it.spring.toolbox.dao</value>
 			</list>
 		</property>
+
 	</bean>
 
 
@@ -67,7 +68,7 @@
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
+
 	<!-- tag che serve per fare in modo che l'annotazione @Transactional funzioni -->
 	<tx:annotation-driven transaction-manager="txManager" />
 

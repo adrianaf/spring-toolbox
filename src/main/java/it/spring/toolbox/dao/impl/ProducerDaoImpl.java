@@ -3,7 +3,6 @@ package it.spring.toolbox.dao.impl;
 import java.util.List;
 
 import it.spring.toolbox.dao.ProducerDAO;
-import it.spring.toolbox.domain.Order;
 import it.spring.toolbox.domain.Producer;
 
 import org.hibernate.SessionFactory;
@@ -37,6 +36,17 @@ public class ProducerDaoImpl extends HibernateDaoSupport implements ProducerDAO 
 	@Override
 	public Producer findProducerByName(String name) {
 		List list = getHibernateTemplate().find("from producers where name=?", name);
+		return (Producer) list.get(0);
+	}
+
+	@Override
+	public List<Producer> listProducers() {
+		return getHibernateTemplate().find("from producers");
+	}
+
+	@Override
+	public Producer findProducerById(int id) {
+		List list = getHibernateTemplate().find("from producers where producer_id=?", id);
 		return (Producer) list.get(0);
 	}
 
