@@ -4,11 +4,10 @@ function showProducts() {
 		url : 'http://localhost:8080/hitech-store/showProducts'
 	});
 
-	xhr.done(function(data) {
-		"${Product.productId}";
-		"${Product.productType}";
-		"${Product.price}";
-		"${Product.producer.name}";
+	xhr.done(function(response) {
+		$('#result').html("");
+		var prod = JSON.parse(response);
+		$('#result').html("Product id:- " + prod.productId +"</br>Product Type:- " + prod.productType  + "</br>Price:- " + prod.price);
 	});
 
 	xhr.fail(function() {

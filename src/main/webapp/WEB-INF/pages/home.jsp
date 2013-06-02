@@ -3041,10 +3041,10 @@ body#dummybodyid .diigolet .cItem span.keywordStrong {
 					<div class="container">
 						<ul class="nav">
 							<li class="active"><a href="#">Home</a></li>
-							<li><a href="prods.js" onClick="showProducts()">View product list</a></li>
+							<li><a href="home" onClick="showProducts()">View product list</a></li>
 							<li><a href="#">View producer list</a></li>
 							<li><a href="#">View customer list</a></li>
-							<li><a href="#">Logout</a></li>
+							<li><a href="logout">Logout</a></li>
 						</ul>
 					</div>
 				</div>
@@ -3064,13 +3064,13 @@ body#dummybodyid .diigolet .cItem span.keywordStrong {
 		<hr>
 
 		<!-- Example row of columns -->
-		<div class="row-fluid">
-			<div class="span4">
+		<div id="result" class="row-fluid">
+			<!-- <div class="span4">
 				<h2>Heading</h2>
 				<p>Donec id elit non mi porta gravida at eget metus. Fusce
 					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
 					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
+					magna mollis euismod. Donec sed odio dui.</p> -->
 				<p>
 					<a class="btn" href="#">Delete</a>
 				</p>
