@@ -4,6 +4,8 @@ import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,17 +41,15 @@ public class LoginController {
 	 * @return String specifica il nome della view (jsp) che dovrà essere visualizzata
 	 */
 	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String showHomePage(ModelMap model, Principal principal, HttpServletRequest request) {
+	public String showHomePage(ModelMap model, Principal principal) {
 		
-		String userName = request.getParameter("j_username");
-		String userPassword = request.getParameter("j_password");
+		String userName = principal.getName();
 		
 		// Se non si è loggati, rimanda alla schermata di login
-		if(userName == null || userPassword == null)
+		if(userName == null)
 			return "login";
 		else
 			return "home";
-	
 	}
 	
 	@RequestMapping(value={"/", "login"}, method = RequestMethod.GET)

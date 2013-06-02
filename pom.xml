@@ -182,13 +182,15 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>javax.servlet.jsp.jstl</groupId>
-			<artifactId>jstl-api</artifactId>
-			<version>1.2</version>
-			<scope>compile</scope>
-		</dependency> -->
+		<!-- <dependency> <groupId>javax.servlet.jsp.jstl</groupId> <artifactId>jstl-api</artifactId> 
+			<version>1.2</version> <scope>compile</scope> </dependency> -->
 		<!-- JSTL library dependencies end -->
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.12</version>
+		</dependency>
 
 
 	</dependencies>
