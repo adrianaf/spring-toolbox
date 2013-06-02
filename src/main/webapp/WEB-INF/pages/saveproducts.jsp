@@ -66,8 +66,8 @@ body {
 			</div>
 			
 			<div class="control-group">
-				<label for="producerId" class="control-label">	
-					Producer Id
+				<label for="producerName" class="control-label">	
+					Producer Name
 				</label>
 				<div class="controls"><input name="producerId" type="text" value="" id="producerId">
 				</div>

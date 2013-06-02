@@ -2,6 +2,8 @@ package it.spring.toolbox.controller;
 
 import java.security.Principal;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,18 +38,21 @@ public class LoginController {
 	 * @param principal viene utilizzato per rappresentare l'utente che effettua il login. Fa parte di java.security
 	 * @return String specifica il nome della view (jsp) che dovrà essere visualizzata
 	 */
-	@RequestMapping(value={"/home", "/"}, method=RequestMethod.GET)
-	public String showProductsPage(ModelMap model, Principal principal) {
+	@RequestMapping(value="/home", method=RequestMethod.GET)
+	public String showHomePage(ModelMap model, Principal principal, HttpServletRequest request) {
 		
-		String name = principal.getName();
-		model.addAttribute("username", name);
-		model.addAttribute("message", "Hello World!");
+		String userName = request.getParameter("j_username");
+		String userPassword = request.getParameter("j_password");
 		
-		return "saveproducts";
-		
+		// Se non si è loggati, rimanda alla schermata di login
+		if(userName == null || userPassword == null)
+			return "login";
+		else
+			return "home";
+	
 	}
 	
-	@RequestMapping(value="/login", method = RequestMethod.GET)
+	@RequestMapping(value={"/", "login"}, method = RequestMethod.GET)
 	public String login(ModelMap model) {
 		return "login";
 	}

@@ -13,14 +13,17 @@ import it.spring.toolbox.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-public class AdminController {
+public class HomeController {
 
 
 	@Autowired
@@ -29,6 +32,21 @@ public class AdminController {
 	@Autowired
 	private ProducerService producerService;
 	
+	
+	/**
+	 * 
+	 * 
+	 * @return map mappa che contiene la lista dei prodotti presenti nel db
+	 */
+	@RequestMapping(value = "/showProducts", method = RequestMethod.GET)
+	public @ResponseBody ModelMap showProducts() {
+		
+		ModelMap map = new ModelMap();
+		map.addAttribute("productList", productService.listProducts());
+		
+		return map;
+	
+	}
 	
 	/**
 	 * Metodo che aggiunge un prodotto al database.
@@ -51,18 +69,17 @@ public class AdminController {
 	 * @return String nome della jsp da visualizzare
 	 */
 	@RequestMapping("/addProduct")
-	public String addProducts(@ModelAttribute("product") Product product, ModelMap map, HttpServletRequest request) {
+	public String addProducts(@ModelAttribute("product") Product product, ModelMap model, HttpServletRequest request) {
 		
-		int producerId = new Integer(request.getParameter("producerId"));
+		String producerName = request.getParameter("producerName");
 		
-		Producer producer = producerService.findProducerById(producerId);
+		Producer producer = producerService.findProducerByName(producerName);
 
 		// Se il produttore non esiste nel db lo crea, lo inserisce in product e nel db stesso
 		if(producer == null) {
 			
 			producer = new Producer();
-			producer.setProducerId(producerId);
-			producer.setName("prodName");
+			producer.setName(producerName);
 			
 			Set<Product> prods = new HashSet<Product>();
 			prods.add(product);
@@ -79,9 +96,9 @@ public class AdminController {
 		productService.save(product);
 		
 		List<Product> productList = productService.listProducts();
-		map.addAttribute("productList", productList);
+		model.addAttribute("productList", productList);
 		
-		return "showResults";
+		return "home";
 	
 	}
 	
@@ -97,9 +114,10 @@ public class AdminController {
 		
 		productService.delete(productId);
 		
-		return "redirect:/showProducts";
+		return "redirect:/home";
 		
 	}
+
 	
 	
 	@RequestMapping("/addProducer")
@@ -110,7 +128,7 @@ public class AdminController {
 		List<Producer> producerList = producerService.listProducers();
 		map.addAttribute(producerList);
 		
-		return "showResults";
+		return "home";
 		
 	}
 	

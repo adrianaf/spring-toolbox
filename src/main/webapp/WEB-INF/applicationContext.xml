@@ -57,6 +57,8 @@
 		<property name="packagesToScan">
 			<list>
 				<value>it.spring.toolbox.domain</value>
+				<value>it.spring.toolbox.service</value>
+				<value>it.spring.toolbox.dao</value>
 			</list>
 		</property>
 
